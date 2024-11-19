@@ -1,41 +1,82 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const SignIn = () => {
   const [isRegistering, setIsRegistering] = useState(false);
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordMatchError, setPasswordMatchError] = useState('');
-  const [email, setEmail] = useState(''); 
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordMatchError, setPasswordMatchError] = useState("");
+  const [email, setEmail] = useState("");
 
+  // Handle password change
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     if (confirmPassword && e.target.value !== confirmPassword) {
       setPasswordMatchError("Passwords don't match.");
     } else {
-      setPasswordMatchError('');
+      setPasswordMatchError("");
     }
   };
 
+  // Handle confirm password change
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
     if (password && e.target.value !== password) {
       setPasswordMatchError("Passwords don't match.");
     } else {
-      setPasswordMatchError('');
+      setPasswordMatchError("");
     }
   };
 
+  // Toggle between login and registration forms
   const toggleForm = (e) => {
-    e.preventDefault(); // Prevents default form submission behavior
+    e.preventDefault();
     setIsRegistering(!isRegistering);
-    setPassword('');
-    setConfirmPassword('');
-    setPasswordMatchError('');
-    setEmail('');
+    setPassword("");
+    setConfirmPassword("");
+    setPasswordMatchError("");
+    setEmail("");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); 
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (isRegistering && password !== confirmPassword) {
+      setPasswordMatchError("Passwords don't match.");
+      return;
+    }
+
+    try {
+      if (isRegistering) {
+        const response = await fetch("http://localhost:3000/signUp", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            FirstName: e.target.firstName?.value || "",
+            LastName: e.target.lastName?.value || "",
+            Email: email,
+            Password: password,
+            ConfirmPassword: confirmPassword,
+            Otp: 0,
+            OtpVerified: false,
+          }),
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+          alert("Registration successful: " + result.message);
+        } else {
+          alert("Error: " + (result.message || "Something went wrong!"));
+        }
+      } else {
+        // Add your login API logic here
+        alert("Logging in with email: " + email);
+      }
+    } catch (error) {
+      alert("An error occurred: " + error.message);
+    }
   };
 
   return (
@@ -63,7 +104,7 @@ const SignIn = () => {
         <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
           <div className="max-w-xl lg:max-w-3xl">
             <h1 className="text-2xl font-bold sm:text-3xl">
-              {isRegistering ? 'Create an account' : 'Log in to your account'}
+              {isRegistering ? "Create an account" : "Log in to your account"}
             </h1>
 
             <form onSubmit={handleSubmit} className="mt-8">
@@ -91,71 +132,50 @@ const SignIn = () => {
                         required
                       />
                     </div>
-
-                    <div>
-                      <label className="block text-sm font-medium" htmlFor="email">Email</label>
-                      <input
-                        className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
-                        placeholder="Email"
-                        type="email" 
-                        id="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className=" text-sm font-medium" htmlFor="password">Password</label>
-                      <input
-                        className="w-full bg-orange-50 rounded-lg border-orange-500 p-3 text-sm"
-                        placeholder="Password"
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block  text-sm font-medium" htmlFor="confirmPassword">Confirm Password</label>
-                      <input
-                        className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
-                        placeholder="Confirm Password"
-                        type="password"
-                        id="confirmPassword"
-                        value={confirmPassword}
-                        onChange={handleConfirmPasswordChange}
-                        required
-                      />
-                      {passwordMatchError && <p className="text-red-600 text-sm">{passwordMatchError}</p>}
-                    </div>
                   </>
-                ) : (
-                  <>
-                    <div>
-                      <label className="block text-sm font-medium" htmlFor="loginEmail">Email</label>
-                      <input
-                        className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
-                        placeholder="Email address"
-                        type="email"
-                        id="loginEmail"
-                        required
-                      />
-                    </div>
+                ) : null}
 
-                    <div>
-                      <label className="block text-sm font-medium" htmlFor="loginPassword">Password</label>
-                      <input
-                        className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
-                        placeholder="Password"
-                        type="password"
-                        id="loginPassword"
-                        required
-                      />
-                    </div>
-                  </>
-                )}
+                <div>
+                  <label className="block text-sm font-medium" htmlFor="email">Email</label>
+                  <input
+                    className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
+                    placeholder="Email address"
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium" htmlFor="password">Password</label>
+                  <input
+                    className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
+                    placeholder="Password"
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    required
+                  />
+                </div>
+
+                {isRegistering ? (
+                  <div>
+                    <label className="block text-sm font-medium" htmlFor="confirmPassword">Confirm Password</label>
+                    <input
+                      className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
+                      placeholder="Confirm Password"
+                      type="password"
+                      id="confirmPassword"
+                      value={confirmPassword}
+                      onChange={handleConfirmPasswordChange}
+                      required
+                    />
+                    {passwordMatchError && <p className="text-red-600 text-sm">{passwordMatchError}</p>}
+                  </div>
+                ) : null}
               </div>
 
               <div className="mt-6">
@@ -163,41 +183,27 @@ const SignIn = () => {
                   type="submit"
                   className="flex w-full items-center justify-center rounded-lg bg-orange-600 px-4 py-2 text-white hover:bg-orange-200 hover:text-orange-500 focus:outline-none"
                 >
-                  {isRegistering ? 'Create Account' : 'Log in'}
+                  {isRegistering ? "Create Account" : "Log in"}
                 </button>
               </div>
 
               <div className="mt-4 text-center text-sm">
                 {isRegistering ? (
                   <>
-                    Already have an account?{' '}
+                    Already have an account?{" "}
                     <button onClick={toggleForm} className="text-orange-500 hover:bg-white">
                       Log in
                     </button>
                   </>
                 ) : (
                   <>
-                    Don’t have an account?{' '}
+                    Don’t have an account?{" "}
                     <button onClick={toggleForm} className="text-orange-500 hover:underline">
                       Sign up
                     </button>
                   </>
                 )}
               </div>
-
-              {!isRegistering && (
-                <div className="mt-4 text-center text-sm">
-                  <p>Or log in with:</p>
-                  
-                  <a
-                    href="https://accounts.google.com"
-                    target="_blank"
-                    className="flex w-25 items-center justify-center rounded-lg bg-orange-600 px-4 py-2 text-white hover:bg-orange-200 hover:text-orange-500 focus:outline-none"
-                  >
-                    Google
-                  </a>
-                </div>
-              )}
             </form>
           </div>
         </main>
