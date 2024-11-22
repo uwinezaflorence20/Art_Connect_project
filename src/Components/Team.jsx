@@ -31,7 +31,7 @@ return(
           <img
             alt=""
             src="/ephron.jpg"
-            className="size-24 rounded-full object-cover"
+            className="size-24  rounded-full object-cover"
           />
 
           <div>
@@ -48,7 +48,7 @@ return(
         <div className="flex items-center gap-4">
           <img
             alt=""
-            src="/team1.jpg"
+            src="/christal.jpg"
             className="size-24 rounded-full object-cover"
           />
 
