@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { UserProvider } from './Components/UserContext';
+import { UserProvider } from '../UserContext';
 import Layout from './Components/Layout';
 import Home from './Components/Home'; 
 import Team from './Components/Team';
