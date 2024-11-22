@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-white">
@@ -8,7 +9,7 @@ const Footer = () => {
             Make Your Next Career Move!{" "}
           </strong>
 
-          <a
+        <Link to="/signin">  <a
             className="inline-flex items-center gap-1 rounded-full border border-white bg-white px-8 py-3 text-orange-500 hover:bg-transparent hover:text-white focus:outline-none focus:ring active:bg-white/90"
             href="#"
           >
@@ -24,6 +25,7 @@ const Footer = () => {
               <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
+          </Link>
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -56,44 +58,11 @@ const Footer = () => {
                 </a>
               </li>
 
-              <li>
-                <a
-                  className="text-gray-700 transition hover:text-gray-700/75"
-                  href="#"
-                >
-                  {" "}
-                  Web Design{" "}
-                </a>
-              </li>
+         
             </ul>
           </div>
 
-          <div className="text-center sm:text-left">
-            <p className="text-lg font-medium text-gray-900">Helpful Links</p>
-
-            <ul className="mt-8 space-y-4 text-sm">
-              <li>
-                <a
-                  className="text-gray-700 transition hover:text-gray-700/75"
-                  href="#"
-                >
-                  {" "}
-                  FAQs{" "}
-                </a>
-              </li>
-
-              <li>
-                <a
-                  className="text-gray-700 transition hover:text-gray-700/75"
-                  href="#"
-                >
-                  {" "}
-                  Support{" "}
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+                  </div>
 
         <div className="mt-8">
           <div className=" sm:flex sm:items-center sm:justify-between">

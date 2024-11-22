@@ -1,5 +1,8 @@
 import AboutUs from "./AboutUs";
 import Team from "./Team";
+import Service from "./Services";
+import Footer from "./Footer";
+import ContactUs from "./ContactUs";
 import { Link } from "react-router-dom";
 const Home = () => {
   return (
@@ -29,19 +32,23 @@ const Home = () => {
                 Sign Up
               </a>
 </Link> 
-              <a
+            <Link to="/aboutus"> <a
                 href="#"
                 className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-orange-500 shadow hover:bg-gray-100 focus:outline-none focus:ring sm:w-auto"
               >
                 Learn More
               </a>
+              </Link> 
             </div>
           </div>
         </div>
   </section>
 
       <AboutUs />
+      <Service/>
       <Team />
+      <ContactUs/>
+      <Footer/>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import {motion} from 'framer-motion';
+import { Link } from 'react-router-dom';
 const AboutUs = () => {
   return (
     <div>
@@ -30,12 +31,13 @@ const AboutUs = () => {
         Art-Connect connects artists and art lovers in a vibrant space to explore, share, and celebrate creativity. Discover inspiring artwork and support emerging talent.Whether you’re looking to discover inspiring pieces or support emerging artists, Art-Connect is your gateway to a world of creativity and connection.
         </motion.p>
 
-        <a
+      <Link to="/signin"> <a
           href="#"
           className="mt-8 inline-block rounded bg-orange-500 px-12 py-3 text-sm font-medium text-white transition hover:bg-orange-200 hover:text-orange-500 focus:outline-none focus:ring focus:ring-yellow-400"
         >
           Sign Up today
         </a>
+        </Link> 
       </div>
     </div>
   </div>

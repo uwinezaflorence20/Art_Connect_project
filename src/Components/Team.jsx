@@ -30,19 +30,18 @@ return(
         <div className="flex items-center gap-4">
           <img
             alt=""
-            src="/team1.jpg"
+            src="/ephron.jpg"
             className="size-24 rounded-full object-cover"
           />
 
           <div>
-            <p className="mt-0.5 text-lg font-medium  text-[#191047]">Paul Starr</p>
+            <p className="mt-0.5 text-lg font-medium  text-[#191047]">Tuyishime Ephron</p>
           </div>
         </div>
 
         <p className="mt-4  text-[#191047]">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-          consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus
-          error officiis atque voluptates magnam!
+        University of Rwanda student at college of science and technology college of science and technology. Attending bachelor degree in computer science year 3.
+        passionate in web designing and AI. 
         </p>
       </blockquote>
       <blockquote className="rounded-lg bg-orange-50 p-6 shadow-sm sm:p-8">
@@ -54,14 +53,13 @@ return(
           />
 
           <div>
-            <p className="mt-0.5 text-lg font-medium text-[#191047]">Paul Starr</p>
+            <p className="mt-0.5 text-lg font-medium text-[#191047]">Icyeza Ngabo christal</p>
           </div>
         </div>
 
         <p className="mt-4 text-[#191047]">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt, a
-          consequuntur recusandae ab saepe illo est quia obcaecati neque quibusdam eius accusamus
-          error officiis atque voluptates magnam!
+        University of Rwanda student at college of science and technology college of science and technology. Attending bachelor degree in computer science year 3.
+        passionate in web designing and AI. 
         </p>
       </blockquote>
 

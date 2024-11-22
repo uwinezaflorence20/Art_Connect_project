@@ -35,12 +35,21 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    to="/services"
+                    to="/service"
                     className="text-orange-500 transition hover:text-orange-300"
                   >
                     Services
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    to="/contactus"
+                    className="text-orange-500 transition hover:text-orange-300"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+
               </ul>
             </nav>
           </div>
