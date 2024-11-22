@@ -3,7 +3,7 @@ import { HiOutlineBell } from "react-icons/hi";
 import { Popover, Transition, Menu } from "@headlessui/react";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../components/UserContext";
+import { useUser } from "/src/components/UserContext";
 
 function Header() {
   const navigate = useNavigate();
