@@ -61,7 +61,7 @@ const Messages = () => {
   return (
     <div className="rounded-lg border border-gray-200">
       <div className="overflow-x-auto rounded-t-lg">
-        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-md">
           <thead className="ltr:text-left rtl:text-right">
             <tr>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
@@ -74,7 +74,7 @@ const Messages = () => {
           <tbody className="divide-y divide-gray-200">
             {currentMessages.map((message) => (
               <tr key={message._id}>
-                <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{message.Name}</td>
+                <td className="whitespace-nowrap px-4 py-4 font-medium text-gray-900">{message.Name}</td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">{message.Email}</td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">{message.Tel}</td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">{message.Message}</td>
