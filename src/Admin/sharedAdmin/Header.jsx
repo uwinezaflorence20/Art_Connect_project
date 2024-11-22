@@ -1,23 +1,22 @@
-import { Fragment, useState, useEffect } from "react";
+import  { Fragment, useState, useEffect } from "react";
 import { HiOutlineBell } from "react-icons/hi";
 import { Popover, Transition, Menu } from "@headlessui/react";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
-// import { useUser } from "../../components/UserContext";
+import { useUser } from "../../components/UserContext";
 
 function Header() {
   const navigate = useNavigate();
-  const { user } = useUser(); // Access user info from context
+  const { user } = useUser();
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     fetchNotifications();
   }, []);
 
-  // Fetch notifications from an API endpoint
   const fetchNotifications = async () => {
     try {
-      const response = await fetch("/notifications"); // Ensure the API endpoint works
+      const response = await fetch('/notifications');
       const data = await response.json();
       setNotifications(data);
     } catch (error) {
@@ -101,6 +100,7 @@ function Header() {
                 <p className="font-medium">{user ? user.name : "User Name"}</p>
                 <p className="text-sm">{user ? user.email : "user@example.com"}</p>
               </div>
+              
             </Menu.Items>
           </Transition>
         </Menu>

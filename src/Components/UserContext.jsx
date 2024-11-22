@@ -1,23 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import  { createContext, useState, useContext } from 'react';
 
-// Create the context
 const UserContext = createContext();
 
-// Custom hook to access the UserContext
-export const useUser = () => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error("useUser must be used within a UserProvider");
-  }
-  return context;
-};
-
-// UserProvider component to wrap the app
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    name: "John Doe",
-    email: "john.doe@example.com",
-  });
+  const [user, setUser] = useState({ name: "User", email: "Unknown User" });
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -26,4 +12,4 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-export default UserContext;
+export const useUser = () => useContext(UserContext);
