@@ -1,215 +1,142 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useUser } from '../../UserContext';
 
-const SignIn = () => {
-  const [isRegistering, setIsRegistering] = useState(false);
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordMatchError, setPasswordMatchError] = useState("");
+const Signin = () => {
+  const { setUser } = useUser();
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Handle password change
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    if (confirmPassword && e.target.value !== confirmPassword) {
-      setPasswordMatchError("Passwords don't match.");
-    } else {
-      setPasswordMatchError("");
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const isValid = () => {
+    let valid = true;
+    setEmailError("");
+    setPasswordError("");
+
+    if (!email.trim()) {
+      setEmailError("Email is required");
+      valid = false;
+    } else if (!isValidEmail(email)) {
+      setEmailError("Email is invalid");
+      valid = false;
     }
-  };
 
-  // Handle confirm password change
-  const handleConfirmPasswordChange = (e) => {
-    setConfirmPassword(e.target.value);
-    if (password && e.target.value !== password) {
-      setPasswordMatchError("Passwords don't match.");
-    } else {
-      setPasswordMatchError("");
+    if (!password.trim()) {
+      setPasswordError("Password is required");
+      valid = false;
     }
+
+    return valid;
   };
 
-  // Toggle between login and registration forms
-  const toggleForm = (e) => {
-    e.preventDefault();
-    setIsRegistering(!isRegistering);
-    setPassword("");
-    setConfirmPassword("");
-    setPasswordMatchError("");
-    setEmail("");
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (isRegistering && password !== confirmPassword) {
-      setPasswordMatchError("Passwords don't match.");
+    if (!isValid()) {
       return;
     }
 
+    setLoading(true);
+
     try {
-      if (isRegistering) {
-        const response = await fetch("http://localhost:3000/signUp", {
-          method: "POST",
+      const response = await axios.post(
+        "https://seekconnect-backend-1.onrender.com/login",
+        {
+          Email: email,
+          Password: password,
+        },
+        {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            FirstName: e.target.firstName?.value || "",
-            LastName: e.target.lastName?.value || "",
-            Email: email,
-            Password: password,
-            ConfirmPassword: confirmPassword,
-            Otp: 0,
-            OtpVerified: false,
-          }),
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-          alert("Registration successful: " + result.message);
-        } else {
-          alert("Error: " + (result.message || "Something went wrong!"));
         }
+      );
+
+      const { role, name } = response.data;
+
+      if (role === "user") {
+        setUser({ name, email, role });
+        navigate("/dash", { state: { name, email, role } });
+      } else if (role === "admin") {
+        setUser({ name, email, role });
+        navigate("/dashboardadmin", { state: { name, email, role } });
       } else {
-        // Add your login API logic here
-        alert("Logging in with email: " + email);
+        console.log("You're not registered. Please sign up first.");
       }
+
     } catch (error) {
-      alert("An error occurred: " + error.message);
+      if (error.response && error.response.status === 401) {
+        setLoginError("Invalid email or password");
+      } else {
+        setLoginError("An error occurred. Please try again later.");
+      }
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <section className="bg-white">
-      <div className="mt-10 lg:grid lg:min-h-screen lg:grid-cols-12">
-        <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
-          <img
-            alt=""
-            src="/im3.jpg"
-            className="absolute inset-0 h-full w-full object-cover opacity-80"
-          />
-          <div className="hidden lg:relative lg:block lg:p-12">
-            <h2 className="mt-6 text-2xl font-bold text-blue-500 sm:text-3xl md:text-4xl">
-              Welcome to ArtConnect
-            </h2>
-            <p className="mt-4 leading-relaxed text-cyan-100 reduced-word-spacing">
-              ArtConnect is a platform designed to bridge designers and customers, allowing them to create,
-              share, and purchase unique designs. Designers on the platform can create accounts, log in,
-              and access a personal dashboard where they can fill out details like country, language, shop name,
-              and upload product images.
-            </p>
+    <div className="flex items-center justify-center min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/public/im3.jpg')" }}>
+      <div className="bg-white bg-opacity-80 p-8 rounded-lg w-full max-w-md">
+        <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Log in to your account</h2>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email address"
+              className={`w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 ${emailError ? "border-red-500" : ""}`}
+            />
+            {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
           </div>
-        </section>
 
-        <main className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
-          <div className="max-w-xl lg:max-w-3xl">
-            <h1 className="text-2xl font-bold sm:text-3xl">
-              {isRegistering ? "Create an account" : "Log in to your account"}
-            </h1>
-
-            <form onSubmit={handleSubmit} className="mt-8">
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {isRegistering ? (
-                  <>
-                    <div>
-                      <label className="block text-sm font-medium" htmlFor="firstName">First Name</label>
-                      <input
-                        className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
-                        placeholder="First Name"
-                        type="text"
-                        id="firstName"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium" htmlFor="lastName">Last Name</label>
-                      <input
-                        className="w-full bg-orange-50 rounded-lg border-gray-200 p-3 text-sm"
-                        placeholder="Last Name"
-                        type="text"
-                        id="lastName"
-                        required
-                      />
-                    </div>
-                  </>
-                ) : null}
-
-                <div>
-                  <label className="block text-sm font-medium" htmlFor="email">Email</label>
-                  <input
-                    className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
-                    placeholder="Email address"
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium" htmlFor="password">Password</label>
-                  <input
-                    className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
-                    placeholder="Password"
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    required
-                  />
-                </div>
-
-                {isRegistering ? (
-                  <div>
-                    <label className="block text-sm font-medium" htmlFor="confirmPassword">Confirm Password</label>
-                    <input
-                      className="w-full rounded-lg bg-orange-50 border-gray-200 p-3 text-sm"
-                      placeholder="Confirm Password"
-                      type="password"
-                      id="confirmPassword"
-                      value={confirmPassword}
-                      onChange={handleConfirmPasswordChange}
-                      required
-                    />
-                    {passwordMatchError && <p className="text-red-600 text-sm">{passwordMatchError}</p>}
-                  </div>
-                ) : null}
-              </div>
-
-              <div className="mt-6">
-                <button
-                  type="submit"
-                  className="flex w-full items-center justify-center rounded-lg bg-orange-600 px-4 py-2 text-white hover:bg-orange-200 hover:text-orange-500 focus:outline-none"
-                >
-                  {isRegistering ? "Create Account" : "Log in"}
-                </button>
-              </div>
-
-              <div className="mt-4 text-center text-sm">
-                {isRegistering ? (
-                  <>
-                    Already have an account?{" "}
-                    <button onClick={toggleForm} className="text-orange-500 hover:bg-white">
-                      Log in
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    Don’t have an account?{" "}
-                    <button onClick={toggleForm} className="text-orange-500 hover:underline">
-                      Sign up
-                    </button>
-                  </>
-                )}
-              </div>
-            </form>
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className={`w-full px-4 py-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 ${passwordError ? "border-red-500" : ""}`}
+            />
+            {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
           </div>
-        </main>
+
+          {loginError && <p className="text-red-500 text-center text-sm mt-1">{loginError}</p>}
+
+          <button
+            type="submit"
+            className="w-full py-2 mt-4 text-white bg-orange-500 rounded-md hover:bg-orange-200 focus:outline-none"
+            disabled={loading}
+          >
+            {loading ? 'Logging in...' : 'Log In'}
+          </button>
+        </form>
+
+        <p className="mt-4 text-center text-sm text-gray-600">
+          Don’t have an account? <Link to="/signup" className="text-orange-500 text-bold hover:text-orange-300">Sign up</Link>
+        </p>
+        <p className="text-center text-sm mt-2">
+          <Link to="/resetpassword" className="text-orange-500 hover:text-orange-300">Forgot your password?</Link>
+        </p>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default SignIn;
+export default Signin;

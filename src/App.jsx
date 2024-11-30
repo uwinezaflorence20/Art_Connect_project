@@ -5,8 +5,11 @@ import Home from './Components/Home';
 import Team from './Components/Team';
 import AboutUs from './Components/AboutUs';
 import SignIn from './Components/SignIn';
+import SignUp from './Components/SignUp';
+import OtpVerification from './Components/OtpVerfication';
 import Service from './Components/Services';
 import ContactUs from './Components/ContactUs';
+import ResetPassword from './Components/ResetPassword';
 
 
 
@@ -27,8 +30,11 @@ function App() {
           <Route path="/team" element={<Team/>} />
           <Route path="/aboutus" element={<AboutUs/>} />
           <Route path="/signin" element={<SignIn/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="otp-verify" element={<OtpVerification />} />
           <Route path="/service" element={<Service/>}/>
           <Route path="/contactus" element={<ContactUs/>}/>
+          <Route path="resetpassword" element={<ResetPassword />} />
         </Route>
 
         <Route path="/" element={<LayoutAdmin />}>
