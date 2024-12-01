@@ -56,7 +56,7 @@ const OTPVerification = () => {
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center"
       style={{
-        backgroundImage: `url('/public/im3.jpg')`, // Replace with the path to your background image
+        backgroundImage: `url('/im3.jpg')`, // Replace with the path to your background image
       }}
     >
       <div className="max-w-md w-full bg-white bg-opacity-90 p-6 rounded-lg shadow-lg">

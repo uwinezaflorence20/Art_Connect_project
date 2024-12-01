@@ -87,7 +87,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/public/im3.jpg')" }}>
+    <div className="flex items-center justify-center min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('/im3.jpg')" }}>
       <div className="bg-white bg-opacity-80 p-8 rounded-lg w-full max-w-md">
         <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Log in to your account</h2>
         <form onSubmit={handleLogin} className="space-y-4">

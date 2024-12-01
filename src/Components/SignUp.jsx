@@ -43,7 +43,7 @@ const Signup = () => {
     <div
       className="min-h-screen mt-8  flex items-center justify-center bg-cover bg-center"
       style={{
-        backgroundImage: `url('/public/im3.jpg')`, // Keep the current background
+        backgroundImage: `url('/im3.jpg')`, // Keep the current background
       }}
     >
       <div className="max-w-md w-full bg-white bg-opacity-80 p-8 rounded-lg shadow-lg">
