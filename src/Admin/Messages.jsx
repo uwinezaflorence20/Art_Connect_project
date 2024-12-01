@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +7,6 @@ const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [currentPage, setCurrentPage] = useState(1);
   const messagesPerPage = 5;
 
@@ -17,9 +16,7 @@ const Messages = () => {
 
   const fetchMessages = async () => {
     try {
-      const response = await axios.get(
-        "https://seekconnect-backend-1.onrender.com/contactUs"
-      );
+      const response = await axios.get("https://seekconnect-backend-1.onrender.com/contactUs");
       if (response.data && Array.isArray(response.data.message)) {
         setMessages(response.data.message);
       } else {
@@ -59,31 +56,32 @@ const Messages = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="rounded-lg border border-gray-200">
-      <div className="overflow-x-auto rounded-t-lg">
-        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-md">
-          <thead className="ltr:text-left rtl:text-right">
-            <tr>
-              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
-              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
-              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Tel</th>
-              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Message</th>
-              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Actions</th>
+    <div className="rounded-lg border border-gray-200 p-4 bg-white">
+      <h2 className="text-lg font-bold mb-4">Messages</h2>
+      <div className="overflow-x-auto">
+        <table className="min-w-full table-auto border-collapse border border-gray-200 text-sm">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="px-4 py-2 text-left font-medium text-gray-700 border-b">Name</th>
+              <th className="px-4 py-2 text-left font-medium text-gray-700 border-b">Email</th>
+              <th className="px-4 py-2 text-left font-medium text-gray-700 border-b">Tel</th>
+              <th className="px-4 py-2 text-left font-medium text-gray-700 border-b">Message</th>
+              <th className="px-4 py-2 text-left font-medium text-gray-700 border-b">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
-            {currentMessages.map((message) => (
-              <tr key={message._id}>
-                <td className="whitespace-nowrap px-4 py-4 font-medium text-gray-900">{message.Name}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{message.Email}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{message.Tel}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">{message.Message}</td>
-                <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  <button
-                    onClick={() => handleDelete(message._id)}
-                    style={{ border: "none", background: "none", cursor: "pointer" }}
-                  >
-                    <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} />
+          <tbody>
+            {currentMessages.map((message, index) => (
+              <tr
+                key={message._id}
+                className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+              >
+                <td className="px-4 py-2 text-gray-700 border-b">{message.Name}</td>
+                <td className="px-4 py-2 text-gray-700 border-b">{message.Email}</td>
+                <td className="px-4 py-2 text-gray-700 border-b">{message.Tel}</td>
+                <td className="px-4 py-2 text-gray-700 border-b">{message.Message}</td>
+                <td className="px-4 py-2 text-gray-700 border-b">
+                  <button onClick={() => handleDelete(message._id)} className="text-red-500 hover:text-red-700">
+                    <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </td>
               </tr>
@@ -92,42 +90,36 @@ const Messages = () => {
         </table>
       </div>
 
-      {/* Pagination Section */}
-      <div className="rounded-b-lg border-t border-gray-200 px-4 py-2">
-        <ol className="flex justify-end gap-1 text-xs font-medium">
-          <li>
-            <button
-              onClick={handlePrevious}
-              disabled={currentPage === 1}
-              className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900"
-            >
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </button>
-          </li>
-
-          {Array.from({ length: totalPages }, (_, index) => (
-            <li key={index}>
-              <button
-                onClick={() => setCurrentPage(index + 1)}
-                className={`block size-8 rounded border ${
-                  currentPage === index + 1 ? "border-blue-600 bg-blue-600 text-white" : "border-gray-100 bg-white text-gray-900"
-                } text-center leading-8`}
-              >
-                {index + 1}
-              </button>
-            </li>
-          ))}
-
-          <li>
-            <button
-              onClick={handleNext}
-              disabled={currentPage === totalPages}
-              className="inline-flex size-8 items-center justify-center rounded border border-gray-100 bg-white text-gray-900"
-            >
-              <FontAwesomeIcon icon={faChevronRight} />
-            </button>
-          </li>
-        </ol>
+      <div className="flex justify-end items-center gap-2 mt-4">
+        <button
+          onClick={handlePrevious}
+          disabled={currentPage === 1}
+          className={`px-2 py-1 rounded-full ${
+            currentPage === 1 ? "bg-gray-300" : "bg-white border"
+          }`}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentPage(index + 1)}
+            className={`px-2 py-1 rounded-full ${
+              currentPage === index + 1 ? "bg-orange-500 text-white" : "bg-gray-100"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+          className={`px-2 py-1 rounded-full ${
+            currentPage === totalPages ? "bg-gray-300" : "bg-white border"
+          }`}
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
       </div>
     </div>
   );

@@ -11,44 +11,52 @@ import Service from './Components/Services';
 import ContactUs from './Components/ContactUs';
 import ResetPassword from './Components/ResetPassword';
 
-
-
-import ProductAdmin from './Admin/ProductAdmin';
 import LayoutAdmin from './Admin/sharedAdmin/LayoutAdmin';
 import DashboardAdmin from './Admin/DashboardAdmin';
 import Orders from './Admin/Orders';
 import Customers from './Admin/Customers';
 import Transactions from './Admin/Transactions';
 import Messages from './Admin/Messages';
+import ProductAdmin from './Admin/ProductAdmin';
+
+import Layoutwo from './Components/Layoutwo';
+import Dashboard from './Components/Dashboard';
+
 function App() {
   return (
     <UserProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/team" element={<Team/>} />
-          <Route path="/aboutus" element={<AboutUs/>} />
-          <Route path="/signin" element={<SignIn/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
-          <Route path="otp-verify" element={<OtpVerification />} />
-          <Route path="/service" element={<Service/>}/>
-          <Route path="/contactus" element={<ContactUs/>}/>
-          <Route path="resetpassword" element={<ResetPassword />} />
-        </Route>
+      <BrowserRouter>
+        <Routes>
+          {/* Public/User Layout */}
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="team" element={<Team />} />
+            <Route path="aboutus" element={<AboutUs />} />
+            <Route path="signin" element={<SignIn />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="otp-verify" element={<OtpVerification />} />
+            <Route path="service" element={<Service />} />
+            <Route path="contactus" element={<ContactUs />} />
+            <Route path="resetpassword" element={<ResetPassword />} />
+          </Route>
 
-        <Route path="/" element={<LayoutAdmin />}>
+          {/* Admin Layout */}
+          <Route path="/admin" element={<LayoutAdmin />}>
+            <Route index element={<DashboardAdmin />} /> {/* Default admin page */}
             <Route path="dashboardadmin" element={<DashboardAdmin />} />
             <Route path="orders" element={<Orders />} />
             <Route path="customers" element={<Customers />} />
             <Route path="transactions" element={<Transactions />} />
             <Route path="messages" element={<Messages />} />
-            <Route path="productadmin" element={<ProductAdmin/>} />
-
-            
+            <Route path="productadmin" element={<ProductAdmin />} />
           </Route>
-      </Routes>
-    </BrowserRouter>
+
+          {/* User Dashboard Layout */}
+          <Route path="/user" element={<Layoutwo />}>
+            <Route path="dash" element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </UserProvider>
   );
 }
