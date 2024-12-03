@@ -66,10 +66,10 @@ const Signin = () => {
 
       if (role === "user") {
         setUser({ name, email, role });
-        navigate("/user/dash", { state: { name, email, role } });
+        navigate("/user", { state: { name, email, role } });
       } else if (role === "admin") {
         setUser({ name, email, role });
-        navigate("/admin/dashboardadmin", { state: { name, email, role } });
+        navigate("/admin", { state: { name, email, role } });
       } else {
         console.log("You're not registered. Please sign up first.");
       }

@@ -11,8 +11,6 @@ import Service from './Components/Services';
 import ContactUs from './Components/ContactUs';
 import ResetPassword from './Components/ResetPassword';
 
-
-
 import ProductAdmin from './Admin/ProductAdmin';
 import LayoutAdmin from './Admin/sharedAdmin/LayoutAdmin';
 import DashboardAdmin from './Admin/DashboardAdmin';
@@ -21,48 +19,45 @@ import Customers from './Admin/Customers';
 import Transactions from './Admin/Transactions';
 import Messages from './Admin/Messages';
 
+import Layoutwo from './User/Layoutwo';
+import Home2 from './User/Home2';
+import PostAds from './User/PostAds';
 
- import Layoutwo from './User/Layoutwo';
- import Dashboard from './Components/Dashboard';
- import PostAds from './User/PostAds';
 function App() {
   return (
     <UserProvider>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/team" element={<Team/>} />
-          <Route path="/aboutus" element={<AboutUs/>} />
-          <Route path="/signin" element={<SignIn/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
-          <Route path="otp-verify" element={<OtpVerification />} />
-          <Route path="/service" element={<Service/>}/>
-          <Route path="/contactus" element={<ContactUs/>}/>
-          <Route path="resetpassword" element={<ResetPassword />} />
-        </Route>
-{/* admin part */}
-        <Route path="/" element={<LayoutAdmin />}>
-            <Route path="dashboardadmin" element={<DashboardAdmin />} />
+      <BrowserRouter>
+        <Routes>
+          {/* Public Layout */}
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="team" element={<Team />} />
+            <Route path="aboutus" element={<AboutUs />} />
+            <Route path="signin" element={<SignIn />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="otp-verify" element={<OtpVerification />} />
+            <Route path="service" element={<Service />} />
+            <Route path="contactus" element={<ContactUs />} />
+            <Route path="resetpassword" element={<ResetPassword />} />
+          </Route>
+
+          {/* Admin Layout */}
+          <Route path="/admin" element={<LayoutAdmin />}>
+            <Route index element={<DashboardAdmin />} />
             <Route path="orders" element={<Orders />} />
             <Route path="customers" element={<Customers />} />
             <Route path="transactions" element={<Transactions />} />
             <Route path="messages" element={<Messages />} />
-            <Route path="productadmin" element={<ProductAdmin/>} />
+            <Route path="productadmin" element={<ProductAdmin />} />
           </Route>
 
-
-{/* user part */}
-
-<Route path="/" element={<Layoutwo />}>
-<Route path="dash" element={<Dashboard />} />
-<Route path="ads" element={<PostAds />} />
-          </Route> 
-
-
-      </Routes>
-
-    </BrowserRouter>
+          {/* User Layout */}
+          <Route path="/user" element={<Layoutwo />}>
+            <Route index element={<Home2 />} />
+            <Route path="ads" element={<PostAds />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </UserProvider>
   );
 }

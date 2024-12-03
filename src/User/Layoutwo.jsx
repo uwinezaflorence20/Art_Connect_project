@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Navbar2 from '../User/Navbar2';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import { useState, useEffect } from 'react';
-
+import Footer from '../Components/Footer';
 const Layout = () => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
@@ -29,6 +29,7 @@ const Layout = () => {
     <div>
       <Navbar2 />
       <Outlet />
+      <Footer/>
       
       {isVisible && (
         <button

@@ -33,7 +33,7 @@ const PostAds = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <h1 className="text-white text-3xl md:text-5xl font-bold mb-4">POST AD</h1>
           <nav className="text-sm text-gray-200">
-            <a href="/" className="hover:underline">Home</a>
+            <a href="/user" className="hover:underline">Home</a>
             <span className="mx-2">&gt;</span>
             <span className="font-medium">Post Ad</span>
           </nav>
