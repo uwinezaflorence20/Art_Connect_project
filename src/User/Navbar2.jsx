@@ -45,7 +45,7 @@ const Navbar2 = () => {
             </Link>
 
             {/* Post Your Ad Button */}
-            <Link to="/ads">
+            <Link to="/ad">
               <button className="flex items-center gap-2 rounded-md bg-orange-500 px-5 py-2 text-white font-medium shadow hover:bg-orange-600 transition">
                 <HiPlusCircle className="text-xl" />
                 Post Your Ad
@@ -102,7 +102,7 @@ const Navbar2 = () => {
                 </li>
                 {/* Post Your Ad in Mobile Menu */}
                 <li>
-                  <Link to="/post-ad">
+                  <Link to="/ads">
                     <button className="flex items-center gap-2 text-orange-500 bg-orange-100 rounded-md w-full px-5 py-2 font-medium transition hover:bg-orange-600 hover:text-white">
                       <HiPlusCircle className="text-xl" />
                       Post Your Ad
