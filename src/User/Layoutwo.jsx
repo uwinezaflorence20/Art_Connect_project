@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Navbar from '../Components/Navbar';
+import Navbar2 from '../User/Navbar2';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import { useState, useEffect } from 'react';
 
@@ -27,7 +27,7 @@ const Layout = () => {
 
   return (
     <div>
-      
+      <Navbar2 />
       <Outlet />
       
       {isVisible && (

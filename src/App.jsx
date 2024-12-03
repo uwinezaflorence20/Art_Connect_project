@@ -24,6 +24,7 @@ import Messages from './Admin/Messages';
 
  import Layoutwo from './User/Layoutwo';
  import Dashboard from './Components/Dashboard';
+ import PostAds from './User/PostAds';
 function App() {
   return (
     <UserProvider>
@@ -54,8 +55,8 @@ function App() {
 {/* user part */}
 
 <Route path="/" element={<Layoutwo />}>
- <Route path="dash" element={<Dashboard />} />
- 
+<Route path="dash" element={<Dashboard />} />
+<Route path="ads" element={<PostAds />} />
           </Route> 
 
 
