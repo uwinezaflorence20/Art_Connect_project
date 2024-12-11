@@ -44,14 +44,14 @@ export const DASHBOARD_SIDEBAR_LINKS = [
   {
     key: "customers",
     label: "All Users",
-    path: "/customers",
+    path: "customers",
     icon: <HiOutlineUsers />,
   },
   
   {
     key: "messages",
     label: "Messages",
-    path: "/messages",
+    path: "messages",
     icon: <HiOutlineAnnotation />,
   },
 ];

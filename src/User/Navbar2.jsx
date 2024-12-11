@@ -11,7 +11,7 @@ const MobileMenu = ({ isOpen, toggleMobileMenu }) => (
     <nav aria-label="Global" className="block p-4">
       <ul className="space-y-4 text-md">
         <li role="menuitem">
-          <Link to="/shops">
+          <Link to="shop">
             <button className="flex items-center gap-2 text-orange-500 bg-orange-100 rounded-md w-full px-5 py-2 font-medium transition hover:bg-orange-600 hover:text-white">
               <FaStore className="text-xl" />
               Shops
@@ -19,7 +19,7 @@ const MobileMenu = ({ isOpen, toggleMobileMenu }) => (
           </Link>
         </li>
         <li role="menuitem">
-          <Link to="/profile">
+          <Link to="profile">
             <button className="flex items-center gap-2 text-orange-500 bg-orange-100 rounded-md w-full px-5 py-2 font-medium transition hover:bg-orange-600 hover:text-white">
               <FaUserCircle className="text-xl" />
               Profile
@@ -68,7 +68,7 @@ const Navbar2 = () => {
           <div className="hidden md:flex items-center gap-6 ml-auto">
             {/* Shops Button */}
             <Link
-              to="shops"
+              to="shop"
               className="flex items-center gap-2 px-4 py-2 text-orange-500 font-medium hover:text-orange-600 transition"
             >
               <div className="bg-orange-100 p-2 rounded-full">
