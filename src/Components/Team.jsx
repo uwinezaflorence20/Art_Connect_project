@@ -41,7 +41,7 @@ return(
 
         <p className="mt-4  text-[#191047]">
         University of Rwanda student at college of science and technology college of science and technology. Attending bachelor degree in computer science year 3.
-        passionate in web designing and AI. 
+        passionate in Front end. 
         </p>
       </blockquote>
       <blockquote className="rounded-lg bg-orange-50 p-6 shadow-sm sm:p-8">
@@ -59,7 +59,7 @@ return(
 
         <p className="mt-4 text-[#191047]">
         University of Rwanda student at college of science and technology college of science and technology. Attending bachelor degree in computer science year 3.
-        passionate in web designing and AI. 
+        passionate in web designing . 
         </p>
       </blockquote>
 
