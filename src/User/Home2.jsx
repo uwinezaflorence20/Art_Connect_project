@@ -46,7 +46,7 @@ const Home2 = () => {
               Home
             </a>
             <span className="mx-2">&gt;</span>
-            npm
+            
           </nav>
         </div>
       </header>
@@ -57,15 +57,15 @@ const Home2 = () => {
         <aside className="md:w-1/4 bg-gray-100 p-4 rounded shadow">
           <h2 className="text-lg font-medium mb-4">Filters by category</h2>
           <div className="mb-4">
-            <label htmlFor="mobileBrand" className="block text-sm font-medium text-gray-700">Mobile Brand</label>
+            <label htmlFor="mobileBrand" className="block text-sm font-medium text-gray-700">Art Category</label>
             <select
               id="mobileBrand"
               className="block w-full px-3 py-2 border border-gray-300 rounded-md text-sm shadow-sm focus:ring-orange-500 focus:border-orange-500"
             >
               <option>Select ...</option>
-              <option>Crads</option>
+              <option>Visual Art</option>
               <option>Clothes</option>
-              <option>Basket</option>
+              <option>Craft</option>
             </select>
           </div>
 
@@ -156,8 +156,8 @@ const Home2 = () => {
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
               />
               <div className="relative border border-gray-100 bg-white p-6">
-                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: John Doe</h3>
-                <p className="text-sm text-gray-500">Art Description: A beautiful painting depicting the serene beauty of a sunset at the beach.</p>
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Alice Kamikazi</h3>
+                <p className="text-sm text-gray-500">Art Description: A beautiful painting depicting the serene beauty </p>
                 <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
                   View More
                 </Link>
@@ -170,7 +170,7 @@ const Home2 = () => {
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
               />
               <div className="relative border border-gray-100 bg-white p-6">
-                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: John Doe</h3>
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Emmy Byiringiro</h3>
                 <p className="text-sm text-gray-500">Art Description: A beautiful painting depicting the serene beauty of a sunset at the beach.</p>
                 <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
                   View More
@@ -184,8 +184,8 @@ const Home2 = () => {
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
               />
               <div className="relative border border-gray-100 bg-white p-6">
-                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: John Doe</h3>
-                <p className="text-sm text-gray-500">Art Description: A beautiful painting depicting the serene beauty of a sunset at the beach.</p>
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Claudine Murekatete</h3>
+                <p className="text-sm text-gray-500">Art Description: A beautiful painting .</p>
                 <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
                   View More
                 </Link>
@@ -198,8 +198,8 @@ const Home2 = () => {
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
               />
               <div className="relative border border-gray-100 bg-white p-6">
-                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: John Doe</h3>
-                <p className="text-sm text-gray-500">Art Description: A beautiful painting depicting the serene beauty of a sunset at the beach.</p>
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Steven Kamugisha</h3>
+                <p className="text-sm text-gray-500">Art Description: A beautiful painting depicting the serene beauty .</p>
                 <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
                   View More
                 </Link>
@@ -212,7 +212,7 @@ const Home2 = () => {
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
               />
               <div className="relative border border-gray-100 bg-white p-6">
-                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Jane Smith</h3>
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: </h3>
                 <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
                 <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
                   View More
@@ -227,7 +227,7 @@ const Home2 = () => {
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
               />
               <div className="relative border border-gray-100 bg-white p-6">
-                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Jane Smith</h3>
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
                 <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
                 <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
                   View More
