@@ -8,7 +8,18 @@ const Home2 = () => {
     "/im3.jpg",
     "/im4.jpg",
     "/im0.jpg",
-    "/img6.jpg"
+    "/img6.jpg",
+    "/phogr1.jpg",
+    "/phogr2.jpg",
+    "/phogr3.jpg",
+    "/visaul1.jpg",
+    "/craft1.jpg",
+    "/craft2.jpg",
+    "/craft3.jpg",
+    "/craft4.jpg",
+    "/craft5.jpg",
+    "/cloth1.jpg",
+    "/cloth2.jpg",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -223,6 +234,127 @@ const Home2 = () => {
             <a href="#" className="group relative block overflow-hidden">
               <img
                 src="/img6.jpg"
+                alt="Product"
+                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+              />
+              <div className="relative border border-gray-100 bg-white p-6">
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
+                <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
+                <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
+                  View More
+                </Link>
+              </div>
+            </a>
+
+            <a href="#" className="group relative block overflow-hidden">
+              <img
+                src="/phogr1.jpg"
+                alt="Product"
+                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+              />
+              <div className="relative border border-gray-100 bg-white p-6">
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
+                <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
+                <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
+                  View More
+                </Link>
+              </div>
+            </a>
+
+
+            <a href="#" className="group relative block overflow-hidden">
+              <img
+                src="/phogr2.jpg"
+                alt="Product"
+                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+              />
+              <div className="relative border border-gray-100 bg-white p-6">
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
+                <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
+                <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
+                  View More
+                </Link>
+              </div>
+            </a>
+
+            <a href="#" className="group relative block overflow-hidden">
+              <img
+                src="/phogr3.jpg"
+                alt="Product"
+                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+              />
+              <div className="relative border border-gray-100 bg-white p-6">
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
+                <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
+                <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
+                  View More
+                </Link>
+              </div>
+            </a>
+
+            <a href="#" className="group relative block overflow-hidden">
+              <img
+                src="/craft1.jpg"
+                alt="Product"
+                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+              />
+              <div className="relative border border-gray-100 bg-white p-6">
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
+                <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
+                <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
+                  View More
+                </Link>
+              </div>
+            </a>
+
+            <a href="#" className="group relative block overflow-hidden">
+              <img
+                src="/craft2.jpg"
+                alt="Product"
+                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+              />
+              <div className="relative border border-gray-100 bg-white p-6">
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
+                <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
+                <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
+                  View More
+                </Link>
+              </div>
+            </a>
+
+            <a href="#" className="group relative block overflow-hidden">
+              <img
+                src="/craft3.jpg"
+                alt="Product"
+                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+              />
+              <div className="relative border border-gray-100 bg-white p-6">
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
+                <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
+                <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
+                  View More
+                </Link>
+              </div>
+            </a>
+
+            <a href="#" className="group relative block overflow-hidden">
+              <img
+                src="/craft4.jpg"
+                alt="Product"
+                className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
+              />
+              <div className="relative border border-gray-100 bg-white p-6">
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: Eric Manzi</h3>
+                <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
+                <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
+                  View More
+                </Link>
+              </div>
+            </a>
+
+            <a href="#" className="group relative block overflow-hidden">
+              <img
+                src="/craft5.jpg"
                 alt="Product"
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
               />

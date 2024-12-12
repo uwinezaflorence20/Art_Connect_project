@@ -27,15 +27,15 @@ return(
         </p>
       </blockquote>
       <blockquote className="rounded-lg bg-orange-50 p-6 shadow-sm sm:p-8">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4">
           <img
             alt=""
-            src="/ephron.jpg"
-            className="size-24  rounded-full object-cover"
+            src="/esron1.png"
+            className="size-24 rounded-full object-cover"
           />
 
           <div>
-            <p className="mt-0.5 text-lg font-medium  text-[#191047]">Tuyishime Ephron</p>
+            <p className="mt-0.5 text-lg font-medium  text-[#191047]">Ephron Tuyishime</p>
           </div>
         </div>
 

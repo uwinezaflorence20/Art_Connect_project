@@ -4,6 +4,19 @@ import PostShop from "./PostShop"; // Import the PostShop component
 
 const Profile = () => {
   const [isPostArtModalOpen, setIsPostArtModalOpen] = useState(false);
+  const [artists, setArtists] = useState([
+    {
+      name: "Uwineza Florence",
+      joined: "Oct 16, 2024",
+      location: "Rwanda, Kigali",
+    },
+  ]);
+
+  const [newArtist, setNewArtist] = useState({
+    name: "",
+    joined: "",
+    location: "",
+  });
 
   const openPostArtModal = () => {
     setIsPostArtModalOpen(true);
@@ -11,6 +24,18 @@ const Profile = () => {
 
   const closePostArtModal = () => {
     setIsPostArtModalOpen(false);
+  };
+
+  const handleAddArtist = () => {
+    if (newArtist.name && newArtist.joined && newArtist.location) {
+      setArtists([...artists, newArtist]);
+      setNewArtist({ name: "", joined: "", location: "" });
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewArtist({ ...newArtist, [name]: value });
   };
 
   return (
@@ -64,25 +89,67 @@ const Profile = () => {
           <h3 className="text-2xl font-semibold mb-4">Profiles</h3>
           <div className="border-t-2 border-orange-500 w-12 mb-4"></div>
 
-          {/* Profile Entry */}
-          <div className="flex items-center justify-between bg-gray-50 rounded-lg p-4 shadow">
-            <div className="flex items-center space-x-4">
-              <div className="bg-orange-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-lg font-bold">
-                U
+          {/* Profile Entries */}
+          {artists.map((artist, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between bg-gray-50 rounded-lg p-4 shadow mb-4"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="bg-orange-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-lg font-bold">
+                  {artist.name.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold">{artist.name}</h4>
+                  <p className="text-sm text-gray-600">
+                    Member Since: {artist.joined}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold">Uwineza Florence</h4>
-                <p className="text-sm text-gray-600">
-                  Member Since: Oct 16, 2024
-                </p>
-              </div>
+              {/* Logout Button */}
+              <Link to="/">
+                <button className="bg-red-500 text-white rounded-lg px-6 py-2 font-medium hover:bg-red-600">
+                  LOGOUT
+                </button>
+              </Link>
             </div>
-            {/* Logout Button */}
-            <Link to="/">
-              <button className="bg-red-500 text-white rounded-lg px-6 py-2 font-medium hover:bg-red-600">
-                LOGOUT
-              </button>
-            </Link>
+          ))}
+
+          {/* Add New Artist */}
+          <div className="mt-6">
+            <h4 className="text-lg font-semibold mb-2">Add New Artist</h4>
+            <div className="flex flex-col md:flex-row md:space-x-4">
+              <input
+                type="text"
+                name="name"
+                value={newArtist.name}
+                onChange={handleInputChange}
+                placeholder="Artist Name"
+                className="border rounded-lg p-2 mb-2 md:mb-0 flex-1"
+              />
+              <input
+                type="text"
+                name="joined"
+                value={newArtist.joined}
+                onChange={handleInputChange}
+                placeholder="Joined Date (e.g., Dec 12, 2024)"
+                className="border rounded-lg p-2 mb-2 md:mb-0 flex-1"
+              />
+              <input
+                type="text"
+                name="location"
+                value={newArtist.location}
+                onChange={handleInputChange}
+                placeholder="Location (e.g., Rwanda, Kigali)"
+                className="border rounded-lg p-2 mb-2 md:mb-0 flex-1"
+              />
+            </div>
+            <button
+              onClick={handleAddArtist}
+              className="bg-orange-600 text-white rounded-lg px-6 py-2 mt-4 font-medium hover:bg-orange-700"
+            >
+              ADD ARTIST
+            </button>
           </div>
 
           {/* Buttons */}
@@ -92,12 +159,6 @@ const Profile = () => {
               onClick={openPostArtModal}
             >
               + POST THE ART
-            </button>
-            <button
-              className="text-orange-600 border border-orange-600 rounded-lg px-6 py-2 font-medium hover:bg-orange-100"
-              onClick={openPostArtModal}
-            >
-              POST THE ART
             </button>
           </div>
         </div>
