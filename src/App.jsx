@@ -25,6 +25,7 @@ import PostAds from "./User/PostAds";
 import Profile from "./User/Profile";
 import Shop from "./User/Shop";
 import ShopDetails from "./User/ShopDetails";
+
 // import ArtistDetails from "./User/ArtistDetails";
 function App() {
   return (

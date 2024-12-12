@@ -212,7 +212,7 @@ const Home2 = () => {
                 className="h-64 w-full object-cover transition duration-500 group-hover:scale-105 sm:h-72"
               />
               <div className="relative border border-gray-100 bg-white p-6">
-                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name: </h3>
+                <h3 className="mt-1.5 text-lg font-medium text-gray-900">Artist Name:Chanella Rwego </h3>
                 <p className="text-sm text-gray-500">Art Description: A modern abstract piece with geometric shapes and vibrant colors.</p>
                 <Link to="artist" className="text-sm text-orange-500 mt-2 inline-block">
                   View More
